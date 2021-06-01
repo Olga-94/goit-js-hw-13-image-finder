@@ -21,7 +21,7 @@ function onSearch(e) {
             return
         }
     refs.gallery.innerHTML = '';
-  API.resetPage();
+  // API.resetPage();
   refs.loadBtn.classList.add('is-hidden');
   refs.form.reset();
 

@@ -12,7 +12,7 @@ export default class imagesApiService {
   }  async getImages() {
     const url = `/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.key}`;
       const {data} = await axios.get(url);
-    this.pageNumber();
+    // this.pageNumber();
      return data.hits;
     }
   
