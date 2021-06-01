@@ -16,12 +16,12 @@ refs.gallery.addEventListener('click', onOpenModal)
 function onSearch(e) {
     e.preventDefault();
     API.searchQuery = e.currentTarget.elements.query.value.trim();
-  
+  API.resetPage();
     if (!API.searchQuery) {
-            return
+      return 
         }
     refs.gallery.innerHTML = '';
-  // API.resetPage();
+ 
   refs.loadBtn.classList.add('is-hidden');
   refs.form.reset();
 
@@ -34,6 +34,8 @@ function onSearch(e) {
       refs.loadBtn.classList.remove('is-hidden');
     });
 }
+
+
 function onLoadBtn () {
   API.getImages().then(hits => {
     if (hits.length === 0) {

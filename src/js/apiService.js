@@ -10,9 +10,9 @@ export default class imagesApiService {
     this.pageNumber = 1;
     this.searchQuery = '';
   }  async getImages() {
-    const url = `/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.key}`;
+    const url = `/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=12&key=${this.key}`;
       const {data} = await axios.get(url);
-    // this.pageNumber();
+    this.nextPage();
      return data.hits;
     }
   
@@ -23,6 +23,7 @@ export default class imagesApiService {
    nextPage() {
     this.pageNumber += 1;
   }
+
   
    get query() {
     return this.searchQuery;
