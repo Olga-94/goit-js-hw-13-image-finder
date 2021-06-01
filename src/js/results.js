@@ -15,17 +15,17 @@ refs.gallery.addEventListener('click', onOpenModal)
 
 function onSearch(e) {
     e.preventDefault();
-    API .searchQuery = e.currentTarget.elements.query.value.trim();
+    API.searchQuery = e.currentTarget.elements.query.value.trim();
   
-    if (!API .searchQuery) {
+    if (!API.searchQuery) {
             return
         }
     refs.gallery.innerHTML = '';
-  API .resetPage();
+  API.resetPage();
   refs.loadBtn.classList.add('is-hidden');
   refs.form.reset();
 
-    API .getImages().then(hits => {
+    API.getImages().then(hits => {
         if (hits.length === 0) {
         alertMsg()
             return
@@ -35,7 +35,7 @@ function onSearch(e) {
     });
 }
 function onLoadBtn () {
-  API .getImages().then(hits => {
+  API.getImages().then(hits => {
     if (hits.length === 0) {
       infoMsg();
       return

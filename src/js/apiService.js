@@ -9,9 +9,7 @@ export default class imagesApiService {
     this.perPage = 12;
     this.pageNumber = 1;
     this.searchQuery = '';
-  }
-  
-  async getImages() {
+  }  async getImages() {
     const url = `/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.key}`;
       const {data} = await axios.get(url);
     this.pageNumber();
@@ -33,4 +31,4 @@ export default class imagesApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
-}
+};
