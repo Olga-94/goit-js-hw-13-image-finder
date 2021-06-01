@@ -1,11 +1,11 @@
-import API from './apiService.js';
+import ApiService from './apiService.js';
 import getRefs from './refs.js';
 import markUpGallery from './markUpGallery.js';
 import { infoMsg, alertMsg } from './notification.js';
 import scroll from './scroll.js';
 import onOpenModal from './basicLightBox.js'
 
-// const API = new ApiService();
+const API = new ApiService();
 const refs = getRefs();
 
 
