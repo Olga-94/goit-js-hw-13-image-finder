@@ -1,32 +1,23 @@
 
-export default class ImagesApiService {
-    constructor() {
-      this.baseURL = 'https://pixabay.com/api';
-      this.key = '21849965-5d080cd355a76516303a4dd69';
-      this.searchQuery = '';
-      this.page = 1;
-  }
-  async getImages() {
-    const response = await fetch(
-      `${this.baseURL}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
-    );
-    return response.json();
-  }
+import axios from 'axios';
 
-    incrementPage() {
-        this.page += 1;
-    }
-    
-    resetPage() {
-        this.page = 1;
-    }
+axios.defaults.baseURL = 'https://pixabay.com/api';
 
-    get query() {
-        return this.searchQuery;
-    }
-
-    set query(newQuery) {
-        this.searchQuery = newQuery;
-    }
-}
-
+export default {
+  key: '21849965-5d080cd355a76516303a4dd69',
+  perPage: 12,
+  pageNumber: 1,
+  searchQuery: '',
+  async getImages(searchQuery) {
+    const request = `/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.key}`;
+      const {
+          data: { hits },
+      } = await axios.get(request);
+    this.pageNumber += 1;
+     return hits;
+    },
+  
+  resetPage() {
+    this.pageNumber = 1;
+  },
+};
