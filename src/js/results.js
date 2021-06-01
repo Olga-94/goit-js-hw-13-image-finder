@@ -1,11 +1,11 @@
-import apiService from './apiService.js';
+import API from './apiService.js';
 import getRefs from './refs.js';
 import markUpGallery from './markUpGallery.js';
 import { infoMsg, alertMsg } from './notification.js';
 import scroll from './scroll.js';
 import onOpenModal from './basicLightBox.js'
 
-
+// const API = new ApiService();
 const refs = getRefs();
 
 
@@ -15,17 +15,17 @@ refs.gallery.addEventListener('click', onOpenModal)
 
 function onSearch(e) {
     e.preventDefault();
-    apiService.searchQuery = e.currentTarget.elements.query.value.trim();
+    API .searchQuery = e.currentTarget.elements.query.value.trim();
   
-    if (!apiService.searchQuery) {
+    if (!API .searchQuery) {
             return
         }
     refs.gallery.innerHTML = '';
-  apiService.resetPage();
+  API .resetPage();
   refs.loadBtn.classList.add('is-hidden');
   refs.form.reset();
 
-    apiService.getImages().then(hits => {
+    API .getImages().then(hits => {
         if (hits.length === 0) {
         alertMsg()
             return
@@ -35,7 +35,7 @@ function onSearch(e) {
     });
 }
 function onLoadBtn () {
-  apiService.getImages().then(hits => {
+  API .getImages().then(hits => {
     if (hits.length === 0) {
       infoMsg();
       return
